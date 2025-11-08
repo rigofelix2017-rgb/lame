@@ -14,6 +14,14 @@ This package contains ONLY the authentication, WebSocket, and onchain integratio
 - Skip functionality (ESC key + button)
 - Cookie persistence (skip on repeat visits)
 
+### ✅ Mobile Controls 📱
+- Virtual joystick (smooth 360° movement)
+- Action buttons (customizable touch controls)
+- Safe area support (iPhone notch, home indicator)
+- Keyboard detection (auto-layout adjustment)
+- Performance mode (optimized for mobile)
+- Overlay management (hide controls when menus open)
+
 ### ✅ Authentication & Sessions
 - Coinbase CDP embedded wallet integration
 - Dev mode bypass (`?devmode=true`)
@@ -62,15 +70,19 @@ web3-infrastructure/
 │   ├── use-player-state.ts  # Player state management
 │   ├── use-chat-handler.ts  # Chat message handling
 │   ├── use-connection-state.ts
-│   └── use-session.ts       # Session management
+│   ├── use-session.ts       # Session management
+│   └── use-mobile.tsx       # 📱 Mobile detection (768px breakpoint)
 ├── components/              # UI components (NO GAME ENGINE)
 │   ├── beta-notice-modal.tsx        # Beta notice
 │   ├── epilepsy-warning-modal.tsx   # Health warning
 │   ├── void-splash-screen.tsx       # Intro coordinator
+│   ├── mobile-controls.tsx          # 📱 Virtual joystick + action buttons
 │   └── void-stages/                 # VOID intro stages
 │       ├── void-stage-gears-unlocking.tsx    # Stage 1
 │       ├── void-stage4-minigame.tsx          # Stage 2 (puzzle)
 │       └── void-stage5-portal.tsx            # Stage 3
+├── contexts/                # React contexts
+│   └── mobile-layout-context.tsx    # 📱 Mobile layout, safe areas, keyboard detection
 ├── server/
 │   ├── routes.ts            # WebSocket + HTTP routes (cleaned)
 │   ├── storage.ts           # Data persistence layer
@@ -215,6 +227,41 @@ function MyApp() {
   return <YourUI />;
 }
 ```
+
+## 📱 Mobile Support
+
+Complete touch controls with virtual joystick and action buttons. See **[MOBILE-CONTROLS-GUIDE.md](./MOBILE-CONTROLS-GUIDE.md)** for full documentation.
+
+```tsx
+import { MobileLayoutProvider } from './contexts/mobile-layout-context';
+import { MobileControls } from './components/mobile-controls';
+
+<MobileLayoutProvider>
+  <YourApp />
+  <MobileControls
+    onMove={(direction) => handleMove(direction)}
+    onInteract={() => console.log('Interact')}
+    onAction={() => console.log('Action')}
+  />
+</MobileLayoutProvider>
+```
+
+**Features:**
+- ✅ Smooth 360° joystick (left side)
+- ✅ Customizable action buttons (right side)
+- ✅ iPhone safe area support (notch, home indicator)
+- ✅ Keyboard detection (auto-layout when typing)
+- ✅ Auto-hidden on desktop (>768px)
+- ✅ Overlay management (hide when menus open)
+
+## 📚 Documentation
+
+- **📘 [COMPLETE-PACKAGE.md](./COMPLETE-PACKAGE.md)** - Main comprehensive guide (START HERE)
+- **[INTRO-SYSTEM-GUIDE.md](./INTRO-SYSTEM-GUIDE.md)** - Detailed intro system docs
+- **📱 [MOBILE-CONTROLS-GUIDE.md](./MOBILE-CONTROLS-GUIDE.md)** - Mobile joystick & touch controls
+- **[EXAMPLE-INTEGRATION.tsx](./EXAMPLE-INTEGRATION.tsx)** - Working example with intro
+- **[EXTRACTION-SUMMARY.md](./EXTRACTION-SUMMARY.md)** - Technical details
+- **[FILE-STRUCTURE.txt](./FILE-STRUCTURE.txt)** - Visual file tree
 
 ## License
 
