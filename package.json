@@ -18,7 +18,13 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "framer-motion": "^11.0.0",
-    "lucide-react": "^0.320.0"
+    "lucide-react": "^0.320.0",
+    "@coinbase/onchainkit": "^0.29.0",
+    "@reown/appkit": "^1.0.0",
+    "@reown/appkit-adapter-wagmi": "^1.0.0",
+    "viem": "^2.7.0",
+    "wagmi": "^2.5.0",
+    "permissionless": "^0.1.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
@@ -47,6 +53,13 @@
       "VOID splash screen with interactive puzzle minigame",
       "Multi-stage intro sequence (gears, minigame, portal)",
       "Skip functionality with cookie persistence",
+      "Mobile controls (virtual joystick + action buttons)",
+      "Safe area support (iPhone notch, home indicator)",
+      "WalletConnect v2 integration (300+ wallets)",
+      "Base chain support (mainnet + sepolia)",
+      "OnchainKit components (official Base devkit)",
+      "Paymaster service (gasless transactions)",
+      "Smart wallet support (ERC-4337)",
       "WebSocket infrastructure with auto-reconnect",
       "Coinbase CDP wallet authentication",
       "HTTP session management",
